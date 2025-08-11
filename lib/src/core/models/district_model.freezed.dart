@@ -26,6 +26,7 @@ mixin _$DistrictModel {
   String get district => throw _privateConstructorUsedError;
   int get population => throw _privateConstructorUsedError;
   DateTime? get created_at => throw _privateConstructorUsedError;
+  String? get uid => throw _privateConstructorUsedError;
 
   /// Serializes this DistrictModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,6 +51,7 @@ abstract class $DistrictModelCopyWith<$Res> {
     String district,
     int population,
     DateTime? created_at,
+    String? uid,
   });
 }
 
@@ -73,6 +75,7 @@ class _$DistrictModelCopyWithImpl<$Res, $Val extends DistrictModel>
     Object? district = null,
     Object? population = null,
     Object? created_at = freezed,
+    Object? uid = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -96,6 +99,10 @@ class _$DistrictModelCopyWithImpl<$Res, $Val extends DistrictModel>
                 ? _value.created_at
                 : created_at // ignore: cast_nullable_to_non_nullable
                       as DateTime?,
+            uid: freezed == uid
+                ? _value.uid
+                : uid // ignore: cast_nullable_to_non_nullable
+                      as String?,
           )
           as $Val,
     );
@@ -117,6 +124,7 @@ abstract class _$$DistrictModelImplCopyWith<$Res>
     String district,
     int population,
     DateTime? created_at,
+    String? uid,
   });
 }
 
@@ -139,6 +147,7 @@ class __$$DistrictModelImplCopyWithImpl<$Res>
     Object? district = null,
     Object? population = null,
     Object? created_at = freezed,
+    Object? uid = freezed,
   }) {
     return _then(
       _$DistrictModelImpl(
@@ -162,6 +171,10 @@ class __$$DistrictModelImplCopyWithImpl<$Res>
             ? _value.created_at
             : created_at // ignore: cast_nullable_to_non_nullable
                   as DateTime?,
+        uid: freezed == uid
+            ? _value.uid
+            : uid // ignore: cast_nullable_to_non_nullable
+                  as String?,
       ),
     );
   }
@@ -176,6 +189,7 @@ class _$DistrictModelImpl implements _DistrictModel {
     this.district = "",
     this.population = 0,
     this.created_at,
+    this.uid,
   });
 
   factory _$DistrictModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -194,10 +208,12 @@ class _$DistrictModelImpl implements _DistrictModel {
   final int population;
   @override
   final DateTime? created_at;
+  @override
+  final String? uid;
 
   @override
   String toString() {
-    return 'DistrictModel(id: $id, zone_name: $zone_name, district: $district, population: $population, created_at: $created_at)';
+    return 'DistrictModel(id: $id, zone_name: $zone_name, district: $district, population: $population, created_at: $created_at, uid: $uid)';
   }
 
   @override
@@ -213,13 +229,21 @@ class _$DistrictModelImpl implements _DistrictModel {
             (identical(other.population, population) ||
                 other.population == population) &&
             (identical(other.created_at, created_at) ||
-                other.created_at == created_at));
+                other.created_at == created_at) &&
+            (identical(other.uid, uid) || other.uid == uid));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, zone_name, district, population, created_at);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    zone_name,
+    district,
+    population,
+    created_at,
+    uid,
+  );
 
   /// Create a copy of DistrictModel
   /// with the given fields replaced by the non-null parameter values.
@@ -242,6 +266,7 @@ abstract class _DistrictModel implements DistrictModel {
     final String district,
     final int population,
     final DateTime? created_at,
+    final String? uid,
   }) = _$DistrictModelImpl;
 
   factory _DistrictModel.fromJson(Map<String, dynamic> json) =
@@ -257,6 +282,8 @@ abstract class _DistrictModel implements DistrictModel {
   int get population;
   @override
   DateTime? get created_at;
+  @override
+  String? get uid;
 
   /// Create a copy of DistrictModel
   /// with the given fields replaced by the non-null parameter values.

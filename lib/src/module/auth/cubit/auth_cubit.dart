@@ -13,6 +13,9 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthState());
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController telController = TextEditingController();
   Future<void> login(String email, String password) async {
     final trimmedEmail = email.trim();
     final trimmedPassword = password.trim();
@@ -36,6 +39,42 @@ class AuthCubit extends Cubit<AuthState> {
       final role = doc.data()?['role'] as String? ?? 'user';
       await TokenStorage.saveUserRole(role);
       emit(state.copyWith(status: Status.success, user: user, role: role));
+    } catch (e) {
+      emit(state.copyWith(status: Status.error));
+    }
+  }
+
+  Future<void> register({
+    required String email,
+    required String password,
+    required String username,
+    required String userTel,
+    required String userAddress,
+  }) async {
+    try {
+      emit(state.copyWith(status: Status.loading));
+      final registerResult = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email.trim(), password: password.trim());
+
+      final user = registerResult.user;
+      if (user == null) {
+        emit(state.copyWith(status: Status.failure));
+        return;
+      }
+      await user.updateDisplayName(username.trim());
+      await user.reload();
+      final userData = {
+        'email': email.trim(),
+        'username': username.trim().toLowerCase(),
+        'user_tel': userTel.trim(),
+        'address': userAddress.trim(),
+        'createdAt': FieldValue.serverTimestamp(),
+        'uid': user.uid,
+        'role': 'user',
+      };
+      await FirebaseFirestore.instance.collection('users').doc(user.uid).set(userData);
+      emit(state.copyWith(status: Status.success, user: user, role: 'user'));
+    } on FirebaseAuthException catch (e) {
+      emit(state.copyWith(status: Status.failure));
     } catch (e) {
       emit(state.copyWith(status: Status.error));
     }

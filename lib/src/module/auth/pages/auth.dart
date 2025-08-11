@@ -120,7 +120,7 @@ class AuthPage extends StatelessWidget implements AutoRouteWrapper {
                         const Text("Don't have an account? "),
                         InkWell(
                           onTap: () {
-                            // context.router.push(const RegisterRoute());
+                            context.router.push(const RegisterRoute());
                           },
                           child: Text(
                             "Sign up",

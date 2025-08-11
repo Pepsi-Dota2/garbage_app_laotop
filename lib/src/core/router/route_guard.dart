@@ -20,7 +20,7 @@ class AdminGuard extends AutoRouteGuard {
     final token = await TokenStorage.getAccessToken();
     final role = await UserRole.getRole();
 
-    if (token != null && role == '2') {
+    if (token != null && role == 'admin') {
       resolver.next();
     } else {
       router.push(const AuthRoute());

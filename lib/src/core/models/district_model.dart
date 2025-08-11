@@ -11,6 +11,7 @@ class DistrictModel with _$DistrictModel {
     @Default("") String district,
     @Default(0) int population,
     DateTime? created_at,
+    String? uid,
   }) = _DistrictModel;
   factory DistrictModel.fromJson(Map<String, dynamic> json) => _$DistrictModelFromJson(json);
 }

@@ -1,5 +1,6 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:hr_app/src/module/admin/home/page/home_admin.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 @RoutePage()
@@ -11,6 +12,9 @@ class DashboardAdminPage extends StatelessWidget {
     return PersistentTabView(
       context,
       screens: [
+        HomeAdminPage(),
+        Container(),
+
         // HomeAdminPage(),
         // BlocProvider<SettingCubit>(create: (_) => SettingCubit(), child: SettingPage()),
       ],

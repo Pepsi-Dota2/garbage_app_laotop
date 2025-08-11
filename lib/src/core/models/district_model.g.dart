@@ -15,6 +15,7 @@ _$DistrictModelImpl _$$DistrictModelImplFromJson(Map<String, dynamic> json) =>
       created_at: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
+      uid: json['uid'] as String?,
     );
 
 Map<String, dynamic> _$$DistrictModelImplToJson(_$DistrictModelImpl instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$DistrictModelImplToJson(_$DistrictModelImpl instance) =>
       'district': instance.district,
       'population': instance.population,
       'created_at': instance.created_at?.toIso8601String(),
+      'uid': instance.uid,
     };

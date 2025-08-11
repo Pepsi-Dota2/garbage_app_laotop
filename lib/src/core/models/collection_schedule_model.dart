@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hr_app/src/core/helper/convert_time.dart';
 
 part 'collection_schedule_model.freezed.dart';
 part 'collection_schedule_model.g.dart';
@@ -11,7 +12,7 @@ class CollectionScheduleModel with _$CollectionScheduleModel {
     @Default("") String start_time,
     @Default("") String end_time,
     @Default(0) int population,
-    DateTime? created_at,
+    @TimestampConverter() DateTime? created_at,
   }) = _CollectionScheduleModel;
   factory CollectionScheduleModel.fromJson(Map<String, dynamic> json) => _$CollectionScheduleModelFromJson(json);
 }

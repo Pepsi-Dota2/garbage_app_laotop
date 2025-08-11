@@ -21,14 +21,14 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  int get id => throw _privateConstructorUsedError;
-  String get user_name => throw _privateConstructorUsedError;
+  String get uid => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   String get user_tel => throw _privateConstructorUsedError;
-  String get user_address => throw _privateConstructorUsedError;
-  String get user_email => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String get user_password => throw _privateConstructorUsedError;
   String get role => throw _privateConstructorUsedError;
-  DateTime? get created_at => throw _privateConstructorUsedError;
+  dynamic get createdAt => throw _privateConstructorUsedError;
 
   /// Serializes this UserModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,14 +46,14 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call({
-    int id,
-    String user_name,
+    String uid,
+    String username,
     String user_tel,
-    String user_address,
-    String user_email,
+    String address,
+    String email,
     String user_password,
     String role,
-    DateTime? created_at,
+    dynamic createdAt,
   });
 }
 
@@ -72,36 +72,36 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? user_name = null,
+    Object? uid = null,
+    Object? username = null,
     Object? user_tel = null,
-    Object? user_address = null,
-    Object? user_email = null,
+    Object? address = null,
+    Object? email = null,
     Object? user_password = null,
     Object? role = null,
-    Object? created_at = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(
       _value.copyWith(
-            id: null == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                      as int,
-            user_name: null == user_name
-                ? _value.user_name
-                : user_name // ignore: cast_nullable_to_non_nullable
+            uid: null == uid
+                ? _value.uid
+                : uid // ignore: cast_nullable_to_non_nullable
+                      as String,
+            username: null == username
+                ? _value.username
+                : username // ignore: cast_nullable_to_non_nullable
                       as String,
             user_tel: null == user_tel
                 ? _value.user_tel
                 : user_tel // ignore: cast_nullable_to_non_nullable
                       as String,
-            user_address: null == user_address
-                ? _value.user_address
-                : user_address // ignore: cast_nullable_to_non_nullable
+            address: null == address
+                ? _value.address
+                : address // ignore: cast_nullable_to_non_nullable
                       as String,
-            user_email: null == user_email
-                ? _value.user_email
-                : user_email // ignore: cast_nullable_to_non_nullable
+            email: null == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
                       as String,
             user_password: null == user_password
                 ? _value.user_password
@@ -111,10 +111,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
                 ? _value.role
                 : role // ignore: cast_nullable_to_non_nullable
                       as String,
-            created_at: freezed == created_at
-                ? _value.created_at
-                : created_at // ignore: cast_nullable_to_non_nullable
-                      as DateTime?,
+            createdAt: freezed == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as dynamic,
           )
           as $Val,
     );
@@ -131,14 +131,14 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    int id,
-    String user_name,
+    String uid,
+    String username,
     String user_tel,
-    String user_address,
-    String user_email,
+    String address,
+    String email,
     String user_password,
     String role,
-    DateTime? created_at,
+    dynamic createdAt,
   });
 }
 
@@ -156,36 +156,36 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? user_name = null,
+    Object? uid = null,
+    Object? username = null,
     Object? user_tel = null,
-    Object? user_address = null,
-    Object? user_email = null,
+    Object? address = null,
+    Object? email = null,
     Object? user_password = null,
     Object? role = null,
-    Object? created_at = freezed,
+    Object? createdAt = freezed,
   }) {
     return _then(
       _$UserModelImpl(
-        id: null == id
-            ? _value.id
-            : id // ignore: cast_nullable_to_non_nullable
-                  as int,
-        user_name: null == user_name
-            ? _value.user_name
-            : user_name // ignore: cast_nullable_to_non_nullable
+        uid: null == uid
+            ? _value.uid
+            : uid // ignore: cast_nullable_to_non_nullable
+                  as String,
+        username: null == username
+            ? _value.username
+            : username // ignore: cast_nullable_to_non_nullable
                   as String,
         user_tel: null == user_tel
             ? _value.user_tel
             : user_tel // ignore: cast_nullable_to_non_nullable
                   as String,
-        user_address: null == user_address
-            ? _value.user_address
-            : user_address // ignore: cast_nullable_to_non_nullable
+        address: null == address
+            ? _value.address
+            : address // ignore: cast_nullable_to_non_nullable
                   as String,
-        user_email: null == user_email
-            ? _value.user_email
-            : user_email // ignore: cast_nullable_to_non_nullable
+        email: null == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
                   as String,
         user_password: null == user_password
             ? _value.user_password
@@ -195,10 +195,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
             ? _value.role
             : role // ignore: cast_nullable_to_non_nullable
                   as String,
-        created_at: freezed == created_at
-            ? _value.created_at
-            : created_at // ignore: cast_nullable_to_non_nullable
-                  as DateTime?,
+        createdAt: freezed == createdAt ? _value.createdAt! : createdAt,
       ),
     );
   }
@@ -208,33 +205,34 @@ class __$$UserModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserModelImpl implements _UserModel {
   const _$UserModelImpl({
-    required this.id,
-    this.user_name = "",
+    this.uid = "",
+    this.username = "",
     this.user_tel = "",
-    this.user_address = "",
-    this.user_email = "",
+    this.address = "",
+    this.email = "",
     this.user_password = "",
     this.role = "",
-    this.created_at,
+    this.createdAt = "",
   });
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
 
   @override
-  final int id;
+  @JsonKey()
+  final String uid;
   @override
   @JsonKey()
-  final String user_name;
+  final String username;
   @override
   @JsonKey()
   final String user_tel;
   @override
   @JsonKey()
-  final String user_address;
+  final String address;
   @override
   @JsonKey()
-  final String user_email;
+  final String email;
   @override
   @JsonKey()
   final String user_password;
@@ -242,11 +240,12 @@ class _$UserModelImpl implements _UserModel {
   @JsonKey()
   final String role;
   @override
-  final DateTime? created_at;
+  @JsonKey()
+  final dynamic createdAt;
 
   @override
   String toString() {
-    return 'UserModel(id: $id, user_name: $user_name, user_tel: $user_tel, user_address: $user_address, user_email: $user_email, user_password: $user_password, role: $role, created_at: $created_at)';
+    return 'UserModel(uid: $uid, username: $username, user_tel: $user_tel, address: $address, email: $email, user_password: $user_password, role: $role, createdAt: $createdAt)';
   }
 
   @override
@@ -254,34 +253,31 @@ class _$UserModelImpl implements _UserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.user_name, user_name) ||
-                other.user_name == user_name) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.user_tel, user_tel) ||
                 other.user_tel == user_tel) &&
-            (identical(other.user_address, user_address) ||
-                other.user_address == user_address) &&
-            (identical(other.user_email, user_email) ||
-                other.user_email == user_email) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.user_password, user_password) ||
                 other.user_password == user_password) &&
             (identical(other.role, role) || other.role == role) &&
-            (identical(other.created_at, created_at) ||
-                other.created_at == created_at));
+            const DeepCollectionEquality().equals(other.createdAt, createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
     runtimeType,
-    id,
-    user_name,
+    uid,
+    username,
     user_tel,
-    user_address,
-    user_email,
+    address,
+    email,
     user_password,
     role,
-    created_at,
+    const DeepCollectionEquality().hash(createdAt),
   );
 
   /// Create a copy of UserModel
@@ -300,35 +296,35 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel({
-    required final int id,
-    final String user_name,
+    final String uid,
+    final String username,
     final String user_tel,
-    final String user_address,
-    final String user_email,
+    final String address,
+    final String email,
     final String user_password,
     final String role,
-    final DateTime? created_at,
+    final dynamic createdAt,
   }) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
 
   @override
-  int get id;
+  String get uid;
   @override
-  String get user_name;
+  String get username;
   @override
   String get user_tel;
   @override
-  String get user_address;
+  String get address;
   @override
-  String get user_email;
+  String get email;
   @override
   String get user_password;
   @override
   String get role;
   @override
-  DateTime? get created_at;
+  dynamic get createdAt;
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.

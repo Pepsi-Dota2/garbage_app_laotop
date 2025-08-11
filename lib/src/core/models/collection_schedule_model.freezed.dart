@@ -28,6 +28,7 @@ mixin _$CollectionScheduleModel {
   String get start_time => throw _privateConstructorUsedError;
   String get end_time => throw _privateConstructorUsedError;
   int get population => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime? get created_at => throw _privateConstructorUsedError;
 
   /// Serializes this CollectionScheduleModel to a JSON map.
@@ -53,7 +54,7 @@ abstract class $CollectionScheduleModelCopyWith<$Res> {
     String start_time,
     String end_time,
     int population,
-    DateTime? created_at,
+    @TimestampConverter() DateTime? created_at,
   });
 }
 
@@ -129,7 +130,7 @@ abstract class _$$CollectionScheduleModelImplCopyWith<$Res>
     String start_time,
     String end_time,
     int population,
-    DateTime? created_at,
+    @TimestampConverter() DateTime? created_at,
   });
 }
 
@@ -198,7 +199,7 @@ class _$CollectionScheduleModelImpl implements _CollectionScheduleModel {
     this.start_time = "",
     this.end_time = "",
     this.population = 0,
-    this.created_at,
+    @TimestampConverter() this.created_at,
   });
 
   factory _$CollectionScheduleModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -219,6 +220,7 @@ class _$CollectionScheduleModelImpl implements _CollectionScheduleModel {
   @JsonKey()
   final int population;
   @override
+  @TimestampConverter()
   final DateTime? created_at;
 
   @override
@@ -280,7 +282,7 @@ abstract class _CollectionScheduleModel implements CollectionScheduleModel {
     final String start_time,
     final String end_time,
     final int population,
-    final DateTime? created_at,
+    @TimestampConverter() final DateTime? created_at,
   }) = _$CollectionScheduleModelImpl;
 
   factory _CollectionScheduleModel.fromJson(Map<String, dynamic> json) =
@@ -297,6 +299,7 @@ abstract class _CollectionScheduleModel implements CollectionScheduleModel {
   @override
   int get population;
   @override
+  @TimestampConverter()
   DateTime? get created_at;
 
   /// Create a copy of CollectionScheduleModel

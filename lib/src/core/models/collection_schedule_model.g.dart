@@ -14,9 +14,7 @@ _$CollectionScheduleModelImpl _$$CollectionScheduleModelImplFromJson(
   start_time: json['start_time'] as String? ?? "",
   end_time: json['end_time'] as String? ?? "",
   population: (json['population'] as num?)?.toInt() ?? 0,
-  created_at: json['created_at'] == null
-      ? null
-      : DateTime.parse(json['created_at'] as String),
+  created_at: const TimestampConverter().fromJson(json['created_at']),
 );
 
 Map<String, dynamic> _$$CollectionScheduleModelImplToJson(
@@ -27,5 +25,5 @@ Map<String, dynamic> _$$CollectionScheduleModelImplToJson(
   'start_time': instance.start_time,
   'end_time': instance.end_time,
   'population': instance.population,
-  'created_at': instance.created_at?.toIso8601String(),
+  'created_at': const TimestampConverter().toJson(instance.created_at),
 };
