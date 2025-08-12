@@ -6,7 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
 import 'package:hr_app/src/core/widget/btn_submit.dart';
 import 'package:hr_app/src/core/widget/custom_form_select.dart';
-import 'package:hr_app/src/module/admin/user/cubit/user_admin_cubit.dart';
+import 'package:hr_app/src/module/admin/user_admin/cubit/user_admin_cubit.dart';
 
 @RoutePage()
 class UserAdminEditPage extends StatelessWidget implements AutoRouteWrapper {

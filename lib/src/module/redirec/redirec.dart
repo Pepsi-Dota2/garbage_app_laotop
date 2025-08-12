@@ -16,6 +16,8 @@ class RedirectPage extends StatelessWidget {
       if (token != null) {
         if (role == 'admin') {
           context.router.replace(const DashboardAdminRoute());
+        } else if (role == 'employee') {
+          context.router.replace(const DashboardEmployeeRoute());
         } else {
           context.router.replace(const DashboardRoute());
         }

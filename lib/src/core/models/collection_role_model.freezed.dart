@@ -21,10 +21,14 @@ CollectionRoleModel _$CollectionRoleModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CollectionRoleModel {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   double get normalPrice => throw _privateConstructorUsedError;
   double get expressPrice => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime? get createdAt => throw _privateConstructorUsedError;
 
   /// Serializes this CollectionRoleModel to a JSON map.
@@ -45,11 +49,14 @@ abstract class $CollectionRoleModelCopyWith<$Res> {
   ) = _$CollectionRoleModelCopyWithImpl<$Res, CollectionRoleModel>;
   @useResult
   $Res call({
-    int id,
+    String id,
+    String userId,
     String name,
+    String username,
     double normalPrice,
     double expressPrice,
-    DateTime? createdAt,
+    String status,
+    @TimestampConverter() DateTime? createdAt,
   });
 }
 
@@ -69,9 +76,12 @@ class _$CollectionRoleModelCopyWithImpl<$Res, $Val extends CollectionRoleModel>
   @override
   $Res call({
     Object? id = null,
+    Object? userId = null,
     Object? name = null,
+    Object? username = null,
     Object? normalPrice = null,
     Object? expressPrice = null,
+    Object? status = null,
     Object? createdAt = freezed,
   }) {
     return _then(
@@ -79,10 +89,18 @@ class _$CollectionRoleModelCopyWithImpl<$Res, $Val extends CollectionRoleModel>
             id: null == id
                 ? _value.id
                 : id // ignore: cast_nullable_to_non_nullable
-                      as int,
+                      as String,
+            userId: null == userId
+                ? _value.userId
+                : userId // ignore: cast_nullable_to_non_nullable
+                      as String,
             name: null == name
                 ? _value.name
                 : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            username: null == username
+                ? _value.username
+                : username // ignore: cast_nullable_to_non_nullable
                       as String,
             normalPrice: null == normalPrice
                 ? _value.normalPrice
@@ -92,6 +110,10 @@ class _$CollectionRoleModelCopyWithImpl<$Res, $Val extends CollectionRoleModel>
                 ? _value.expressPrice
                 : expressPrice // ignore: cast_nullable_to_non_nullable
                       as double,
+            status: null == status
+                ? _value.status
+                : status // ignore: cast_nullable_to_non_nullable
+                      as String,
             createdAt: freezed == createdAt
                 ? _value.createdAt
                 : createdAt // ignore: cast_nullable_to_non_nullable
@@ -112,11 +134,14 @@ abstract class _$$CollectionRoleModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    int id,
+    String id,
+    String userId,
     String name,
+    String username,
     double normalPrice,
     double expressPrice,
-    DateTime? createdAt,
+    String status,
+    @TimestampConverter() DateTime? createdAt,
   });
 }
 
@@ -135,9 +160,12 @@ class __$$CollectionRoleModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? userId = null,
     Object? name = null,
+    Object? username = null,
     Object? normalPrice = null,
     Object? expressPrice = null,
+    Object? status = null,
     Object? createdAt = freezed,
   }) {
     return _then(
@@ -145,10 +173,18 @@ class __$$CollectionRoleModelImplCopyWithImpl<$Res>
         id: null == id
             ? _value.id
             : id // ignore: cast_nullable_to_non_nullable
-                  as int,
+                  as String,
+        userId: null == userId
+            ? _value.userId
+            : userId // ignore: cast_nullable_to_non_nullable
+                  as String,
         name: null == name
             ? _value.name
             : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        username: null == username
+            ? _value.username
+            : username // ignore: cast_nullable_to_non_nullable
                   as String,
         normalPrice: null == normalPrice
             ? _value.normalPrice
@@ -158,6 +194,10 @@ class __$$CollectionRoleModelImplCopyWithImpl<$Res>
             ? _value.expressPrice
             : expressPrice // ignore: cast_nullable_to_non_nullable
                   as double,
+        status: null == status
+            ? _value.status
+            : status // ignore: cast_nullable_to_non_nullable
+                  as String,
         createdAt: freezed == createdAt
             ? _value.createdAt
             : createdAt // ignore: cast_nullable_to_non_nullable
@@ -171,21 +211,31 @@ class __$$CollectionRoleModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CollectionRoleModelImpl implements _CollectionRoleModel {
   const _$CollectionRoleModelImpl({
-    required this.id,
+    this.id = "",
+    this.userId = "",
     this.name = "",
+    this.username = "",
     this.normalPrice = 0.0,
     this.expressPrice = 0.0,
-    this.createdAt,
+    this.status = "pending",
+    @TimestampConverter() this.createdAt,
   });
 
   factory _$CollectionRoleModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectionRoleModelImplFromJson(json);
 
   @override
-  final int id;
+  @JsonKey()
+  final String id;
+  @override
+  @JsonKey()
+  final String userId;
   @override
   @JsonKey()
   final String name;
+  @override
+  @JsonKey()
+  final String username;
   @override
   @JsonKey()
   final double normalPrice;
@@ -193,11 +243,15 @@ class _$CollectionRoleModelImpl implements _CollectionRoleModel {
   @JsonKey()
   final double expressPrice;
   @override
+  @JsonKey()
+  final String status;
+  @override
+  @TimestampConverter()
   final DateTime? createdAt;
 
   @override
   String toString() {
-    return 'CollectionRoleModel(id: $id, name: $name, normalPrice: $normalPrice, expressPrice: $expressPrice, createdAt: $createdAt)';
+    return 'CollectionRoleModel(id: $id, userId: $userId, name: $name, username: $username, normalPrice: $normalPrice, expressPrice: $expressPrice, status: $status, createdAt: $createdAt)';
   }
 
   @override
@@ -206,19 +260,32 @@ class _$CollectionRoleModelImpl implements _CollectionRoleModel {
         (other.runtimeType == runtimeType &&
             other is _$CollectionRoleModelImpl &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.normalPrice, normalPrice) ||
                 other.normalPrice == normalPrice) &&
             (identical(other.expressPrice, expressPrice) ||
                 other.expressPrice == expressPrice) &&
+            (identical(other.status, status) || other.status == status) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, normalPrice, expressPrice, createdAt);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    userId,
+    name,
+    username,
+    normalPrice,
+    expressPrice,
+    status,
+    createdAt,
+  );
 
   /// Create a copy of CollectionRoleModel
   /// with the given fields replaced by the non-null parameter values.
@@ -239,25 +306,35 @@ class _$CollectionRoleModelImpl implements _CollectionRoleModel {
 
 abstract class _CollectionRoleModel implements CollectionRoleModel {
   const factory _CollectionRoleModel({
-    required final int id,
+    final String id,
+    final String userId,
     final String name,
+    final String username,
     final double normalPrice,
     final double expressPrice,
-    final DateTime? createdAt,
+    final String status,
+    @TimestampConverter() final DateTime? createdAt,
   }) = _$CollectionRoleModelImpl;
 
   factory _CollectionRoleModel.fromJson(Map<String, dynamic> json) =
       _$CollectionRoleModelImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
+  @override
+  String get userId;
   @override
   String get name;
+  @override
+  String get username;
   @override
   double get normalPrice;
   @override
   double get expressPrice;
   @override
+  String get status;
+  @override
+  @TimestampConverter()
   DateTime? get createdAt;
 
   /// Create a copy of CollectionRoleModel

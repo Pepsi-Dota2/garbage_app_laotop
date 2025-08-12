@@ -1,6 +1,9 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hr_app/src/module/admin/home/page/home_admin.dart';
+import 'package:hr_app/src/module/admin/profile/cubit/profile_admin_cubit.dart';
+import 'package:hr_app/src/module/admin/profile/page/profile_admin.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 @RoutePage()
@@ -13,7 +16,7 @@ class DashboardAdminPage extends StatelessWidget {
       context,
       screens: [
         HomeAdminPage(),
-        Container(),
+        BlocProvider<ProfileAdminCubit>(create: (_) => ProfileAdminCubit(), child: ProfileAdminPage()),
 
         // HomeAdminPage(),
         // BlocProvider<SettingCubit>(create: (_) => SettingCubit(), child: SettingPage()),

@@ -27,3 +27,17 @@ class AdminGuard extends AutoRouteGuard {
     }
   }
 }
+
+class EmployeeGuard extends AutoRouteGuard {
+  @override
+  Future<void> onNavigation(NavigationResolver resolver, StackRouter router) async {
+    final token = await TokenStorage.getAccessToken();
+    final role = await UserRole.getRole();
+
+    if (token != null && role == 'employee') {
+      resolver.next();
+    } else {
+      router.push(const AuthRoute());
+    }
+  }
+}

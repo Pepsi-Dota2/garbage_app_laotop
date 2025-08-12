@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
+import 'package:hr_app/src/core/helper/token_storage.dart';
 import 'package:hr_app/src/core/router/router.dart';
 import 'package:hr_app/src/core/widget/loading_dialog.dart';
 import 'package:hr_app/src/module/auth/cubit/auth_cubit.dart';
@@ -22,14 +23,23 @@ class AuthPage extends StatelessWidget implements AutoRouteWrapper {
     return Scaffold(
       backgroundColor: Colors.white,
       body: BlocListener<AuthCubit, AuthState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state.status == Status.loading) {
             showDialog(context: context, barrierDismissible: false, builder: (context) => const LoadingDialog());
           } else {
             if (Navigator.canPop(context)) Navigator.pop(context);
           }
           if (state.status == Status.success) {
-            context.router.replace(DashboardRoute());
+            final role = await UserRole.getRole();
+            if (!context.mounted) return;
+
+            if (role == 'admin') {
+              context.router.replace(const DashboardAdminRoute());
+            } else if (role == 'employee') {
+              context.router.replace(const DashboardEmployeeRoute());
+            } else {
+              context.router.replace(const DashboardRoute());
+            }
           }
           if (state.status == Status.failure) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login failed')));

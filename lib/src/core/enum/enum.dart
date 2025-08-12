@@ -1,4 +1,4 @@
-enum Status { initial, loading, success, failure, error }
+enum Status { initial, loading, success, failure, error, qrReady }
 
 enum TabBarMenu { HOME, PROFILE }
 

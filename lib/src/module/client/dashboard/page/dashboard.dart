@@ -1,8 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hr_app/src/core/router/router.dart';
+import 'package:hr_app/src/module/client/express/cubit/express_cubit.dart';
+import 'package:hr_app/src/module/client/express/page/express.dart';
+import 'package:hr_app/src/module/client/home/cubit/home_cubit.dart';
 import 'package:hr_app/src/module/client/home/page/home.dart';
+import 'package:hr_app/src/module/client/payment/cubit/payment_cubit.dart';
+import 'package:hr_app/src/module/client/payment/page/payment.dart';
+import 'package:hr_app/src/module/client/profile/cubit/profile_cubit.dart';
+import 'package:hr_app/src/module/client/profile/page/profile.dart';
 
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
@@ -15,20 +21,19 @@ class DashboardPage extends StatelessWidget {
     return PersistentTabView(
       context,
       screens: [
-        HomePage(),
-        Container(),
-        Container(),
-        // BlocProvider<HomeCubit>(
-        //   create: (_) => HomeCubit()
-        //     ..scheduleNextUpdate()
-        //     ..getRecord(),
-        //   child: HomePage(),
-        // ),
-        // BlocProvider<WorkTimeRecordCubit>(create: (_) => WorkTimeRecordCubit(), child: WorkTimeRecordPage()),
-        // BlocProvider<ProfileCubit>(create: (_) => ProfileCubit()..getMe(), child: ProfilePage()),
+        BlocProvider<HomeCubit>(
+          create: (_) => HomeCubit()
+            ..getCurrentUserFromFirestore()
+            ..fetchSchedules(),
+          child: HomePage(),
+        ),
+        BlocProvider<ExpressCubit>(create: (_) => ExpressCubit(), child: ExpressPage()),
+        BlocProvider<PaymentCubit>(create: (_) => PaymentCubit(), child: PaymentPage()),
+        BlocProvider<ProfileCubit>(create: (_) => ProfileCubit(), child: ProfilePage()),
       ],
       items: [
         PersistentBottomNavBarItem(icon: Icon(Icons.home), title: "home", activeColorPrimary: Colors.grey.shade500),
+        PersistentBottomNavBarItem(icon: Icon(Icons.local_shipping), title: "express", activeColorPrimary: Colors.grey.shade500),
         PersistentBottomNavBarItem(icon: Icon(Icons.payment), title: "payment", activeColorPrimary: Colors.grey.shade500),
         PersistentBottomNavBarItem(icon: Icon(Icons.person), title: "Profile", activeColorPrimary: Colors.grey.shade500),
       ],

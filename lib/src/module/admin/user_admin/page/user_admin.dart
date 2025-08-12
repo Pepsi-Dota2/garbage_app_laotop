@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
 import 'package:hr_app/src/core/router/router.dart';
-import 'package:hr_app/src/module/admin/user/cubit/user_admin_cubit.dart';
+import 'package:hr_app/src/module/admin/user_admin/cubit/user_admin_cubit.dart';
 
 @RoutePage()
 class UserAdminPage extends StatelessWidget implements AutoRouteWrapper {

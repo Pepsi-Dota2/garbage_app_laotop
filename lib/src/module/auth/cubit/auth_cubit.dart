@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hr_app/src/core/enum/enum.dart';
 import 'package:hr_app/src/core/helper/token_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
@@ -16,16 +17,22 @@ class AuthCubit extends Cubit<AuthState> {
   final TextEditingController addressController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController telController = TextEditingController();
+
   Future<void> login(String email, String password) async {
     final trimmedEmail = email.trim();
     final trimmedPassword = password.trim();
+
     if (trimmedEmail.isEmpty || trimmedPassword.isEmpty) {
       emit(state.copyWith(status: Status.failure));
       return;
     }
+
     try {
       emit(state.copyWith(status: Status.loading));
+
+      // Sign in with Firebase Auth
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(email: trimmedEmail, password: trimmedPassword);
+
       final user = credential.user;
       if (user == null) {
         emit(state.copyWith(status: Status.failure));
@@ -35,12 +42,27 @@ class AuthCubit extends Cubit<AuthState> {
       if (token != null) {
         await TokenStorage.saveAccessToken(token);
       }
-      final doc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
-      final role = doc.data()?['role'] as String? ?? 'user';
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('userId', user.uid);
+      final employeeDoc = await FirebaseFirestore.instance.collection('employee').doc(user.uid).get();
+      String role;
+      if (employeeDoc.exists) {
+        role = employeeDoc.data()?['role'] as String? ?? 'employee';
+      } else {
+        final userDoc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+        if (userDoc.exists) {
+          role = userDoc.data()?['role'] as String? ?? 'user';
+        } else {
+          role = 'user';
+        }
+      }
+
       await TokenStorage.saveUserRole(role);
+
       emit(state.copyWith(status: Status.success, user: user, role: role));
-    } catch (e) {
-      emit(state.copyWith(status: Status.error));
+    } catch (e, st) {
+      print("Login failed: $e\n$st");
+      emit(state.copyWith(status: Status.failure));
     }
   }
 
@@ -67,6 +89,8 @@ class AuthCubit extends Cubit<AuthState> {
         'username': username.trim().toLowerCase(),
         'user_tel': userTel.trim(),
         'address': userAddress.trim(),
+        'latitude': "",
+        'longitude': "",
         'createdAt': FieldValue.serverTimestamp(),
         'uid': user.uid,
         'role': 'user',
